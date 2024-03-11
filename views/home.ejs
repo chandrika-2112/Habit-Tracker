@@ -1,0 +1,28 @@
+<!-- Importing stylesheet -->
+<link rel="stylesheet" href="./css/home.css">
+
+<!-- Form For Taking Habit List -->
+<div>
+    <form class="habit-form" action="/add-habit" method="POST">
+        <input type="text" name="habit_name" class="habit-details-input" placeholder="Enter Habit You Want To Create" required>
+        <button class="button" type="submit"><i class="fas fa-plus"></i></button>
+    </form>
+</div>
+
+<!-- Rendering habits -->
+<div class="render-habits">
+    <ul class="list-item">
+        <% for (const it of habit_list){ %>
+        <li onclick="location.href='/view-habit/?id=<%=it._id%>'" >
+            <%=it.habit_name%>
+            <!-- <i class="fas fa-regular fa-pen-to-square"></i> -->
+            <div class="habit"> <img src="./edit.png" alt="edit"> </div>
+            <div class="delete">
+                <a href="/delete-habit/?id=<%=it._id%>">
+                    <i class="fas fa-solid fa-trash"></i>
+                </a>
+            </div>
+        </li>
+        <% } %> 
+    </ul>
+</div>
